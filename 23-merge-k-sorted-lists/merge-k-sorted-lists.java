@@ -14,7 +14,7 @@ class Solution {
             return null;
         }
         while(lists.length > 1){
-            List<ListNode> temp = new ArrayList<>();
+            List<ListNode> temp = new LinkedList<>();
             for ( int i=0; i< lists.length; i= i+2){
                 ListNode l1 = lists[i];
                 ListNode l2;
