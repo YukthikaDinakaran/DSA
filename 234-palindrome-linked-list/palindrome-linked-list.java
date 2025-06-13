@@ -12,12 +12,12 @@ class Solution {
     public boolean isPalindrome(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;
-        while (fast != null && fast.next != null && fast.next.next != null){
+        while (fast != null && fast.next != null){
             fast= fast.next.next;
             slow = slow.next;
         }
-        ListNode half = slow.next;
-        ListNode newhead = reversell(slow.next);
+        ListNode half = slow;
+        ListNode newhead = reversell(slow);
         ListNode front = head;
         while( newhead != null){
             if(front.val!= newhead.val){
