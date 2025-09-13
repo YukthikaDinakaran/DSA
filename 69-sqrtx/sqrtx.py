@@ -2,8 +2,6 @@ class Solution(object):
     def mySqrt(self, x):
         if x < 2:
             return x
-        
-        ans = 0
         left, right = 1, x 
         
         while left <= right:
@@ -11,8 +9,7 @@ class Solution(object):
             if mid * mid == x:
                 return mid
             elif mid * mid < x:
-                ans = mid
                 left = mid + 1  
             else:
                 right = mid - 1  
-        return ans
+        return right
