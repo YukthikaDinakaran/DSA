@@ -4,7 +4,7 @@ class Solution(object):
             return x
         
         ans = 0
-        left, right = 1, x // 2
+        left, right = 1, x 
         
         while left <= right:
             mid = (left + right) // 2
