@@ -1,15 +1,25 @@
 class Solution(object):
     def threeSum(self, nums):
         n = len(nums)
-        res = set()
-
+        res = []
+        nums.sort()
         for i in range(n):
-            seen = set()
-            for j in range(i+1, n):
-                need = - (nums[i] + nums[j])
-                if need in seen:
-                    temp = sorted([nums[i], nums[j], need])
-                    res.add(tuple(temp))
-                seen.add(nums[j])
-
-        return list(res)
+            if i!=0 and nums[i]==nums[i-1]:
+                continue
+            j = i+1
+            k = n-1
+            while j<k:
+                total_sum = nums[i]+nums[j]+nums[k]
+                if total_sum < 0:
+                    j +=1
+                elif total_sum > 0:
+                    k -=1
+                else:
+                    res.append([nums[i], nums[j], nums[k]])
+                    j += 1
+                    k -=1
+                    while j<k and nums[j]==nums[j-1]:
+                        j +=1
+                    while j<k and nums[k] == nums[k+1]:
+                        k -=1
+        return res
