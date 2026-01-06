@@ -1,22 +1,24 @@
 class Solution(object):
     def countSubstrings(self, s):
+        n = len(s)
+        cnt = 0
+        for i in range(n):
+            l = r = i
+            while l >=0 and r<n and s[l]== s[r]:
+                cnt +=1
+                l -= 1
+                r +=1
+            l = i
+            r = i+1
+            while l>=0 and r<n and s[l]==s[r]:
+                cnt +=1
+                l -= 1
+                r += 1
+        return cnt
+
+
         """
-        :type s: str
+        :type s:while l >= 0 and r str
         :rtype: int
         """
-        def expand(left, right):
-            count = 0
-            while left >= 0 and right < len(s) and s[left] == s[right]:
-                count += 1
-                left -= 1
-                right += 1
-            return count
         
-        total = 0
-        for i in range(len(s)):
-            # Odd length palindrome
-            total += expand(i, i)
-            # Even length palindrome
-            total += expand(i, i + 1)
-        
-        return total
