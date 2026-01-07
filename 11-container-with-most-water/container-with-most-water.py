@@ -1,22 +1,24 @@
 class Solution(object):
     def maxArea(self, height):
-        n = len(height)
-        left = 0
-        right = n-1 
-        vol = 0
-        while left < right:
-            width = right - left 
-            ht = min(height[left], height[right])
-            area = width*ht
-            vol = max(vol, area)
+        l = 0
+        r = len(height) - 1
+        max_area = 0
 
-            if(height[left]< height[right]):
-                left = left+1
+        while l < r:
+            # width of container
+            w = r - l
+
+            # height of water (smaller line)
+            h = min(height[l], height[r])
+
+            # current area
+            area = w * h
+            max_area = max(max_area, area)
+
+            # move the pointer with smaller height
+            if height[l] < height[r]:
+                l += 1
             else:
-                right = right -1 
-        return vol
-            
-            
+                r -= 1
 
-
-       
+        return max_area
